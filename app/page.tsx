@@ -8,10 +8,10 @@ export default function Home() {
       <FormHeader />
 
       <div className="bg-gray-800/40 rounded">
-        <div className="mx-auto flex flex-1 flex-col lg:flex-row gap-4 mt-8 px-8 ">
+        <div className="mx-auto flex flex-1 flex-col lg:flex-row  justify-center items-center ">
           <FormHero />
 
-          <div className="flex-2 max-w-lg w-full">
+          <div className="flex-1 max-w-lg w-full">
             <MyForm />
           </div>
         </div>

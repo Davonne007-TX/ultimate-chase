@@ -2,7 +2,7 @@
 
 export default function FormHero() {
   return (
-    <section className="mt-20 shadow-md">
+    <section className=" mt-10 lg:mt-0 p-4 shadow-md">
       <h1
         style={{ fontFamily: "var(--font-rubik-wet-paint" }}
         className="font-rubik text-5xl md:text-6xl max-w-3xl lg:text-8xl text-white"
