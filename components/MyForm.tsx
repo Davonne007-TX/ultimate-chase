@@ -21,7 +21,7 @@ export default function MyForm() {
   return (
     <form
       onSubmit={handelSubmit}
-      className="space-y-4 w-96 p-6 bg-white rounded-lg shadow "
+      className="space-y-4 p-6 bg-white rounded-lg shadow"
     >
       <h1 className="text-3xl">Create an Account</h1>
       <p>
@@ -73,6 +73,25 @@ export default function MyForm() {
       <button className="w-full bg-red-500 font-bold p-2 text-white hover:scale-105 transition-all duration-300 ease-in-out ">
         Submit
       </button>
+
+      <div className="relative flex items-center py-5">
+        <div className="grow border-t border-gray-400"></div>
+
+        <span className="shrink mx-4 text-gray-500 text-sm bg-white dark:bg-gray-800">
+          OR
+        </span>
+
+        <div className="grow border-t border-gray-400"></div>
+      </div>
+      <div className="flex flex-col gap-6">
+        <button className="border p-2 text-lg border-black rounded font-extralight">
+          Sign in with Noodle
+        </button>
+
+        <button className="border p-2 text-lg border-black rounded font-extralight">
+          Sign in with Fiddle
+        </button>
+      </div>
     </form>
   );
 }
