@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import OtherOptions from "./OtherOptions";
 
 export default function MyForm() {
   const [formData, setFormData] = useState({
@@ -9,89 +10,109 @@ export default function MyForm() {
     confirmPassword: "",
   });
 
-  function handleChange(e) {
+  const [errors, setErrors] = useState<any>({});
+
+  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   }
 
-  function handelSubmit(e) {
+  function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    console.log("Form has been submitted", formData);
+    const newErrors: any = {};
+
+    if (!formData.name) newErrors.name = "Name is required";
+    if (!formData.password) newErrors.password = "Password is required";
+    if (!formData.confirmPassword)
+      newErrors.confirmPassword = "Confirm Password is required";
+    if (
+      formData.password &&
+      formData.confirmPassword &&
+      formData.password !== formData.confirmPassword
+    )
+      newErrors.confirmPassword = "Passwords do not match";
+
+    setErrors(newErrors);
+
+    if (Object.keys(newErrors).length === 0) {
+      console.log("Form submitted:", formData);
+    }
   }
+
   return (
     <form
-      onSubmit={handelSubmit}
+      onSubmit={handleSubmit}
       className="space-y-4 p-6 bg-white rounded-lg shadow"
     >
       <h1 className="text-3xl">Create an Account</h1>
       <p>
         Your adventure waits, build and create the haunted house of your dreams.
       </p>
-      <div className="flex flex-col gap-2">
-        <label>Name</label>
-        <input
-          placeholder="Enter your name"
-          value={formData.name}
-          onChange={handleChange}
-          className="border p-2"
-        />
-        <div className=" flex flex-col gap-2 mt-4">
+
+      <div className="flex flex-col gap-4">
+        {/* Name */}
+        <div className="flex flex-col gap-2">
+          <label>Name</label>
+          <input
+            name="name"
+            placeholder="Enter your name"
+            value={formData.name}
+            onChange={handleChange}
+            className="border p-2"
+          />
+          {errors.name && <p className="text-red-500 text-sm">{errors.name}</p>}
+        </div>
+
+        {/* Email */}
+        <div className="flex flex-col gap-2">
           <label>Email Address</label>
           <input
+            name="email"
+            type="email"
             placeholder="your@email.com"
-            value={formData.name}
+            value={formData.email}
             onChange={handleChange}
             className="border p-2"
           />
         </div>
 
-        <div className=" flex flex-col gap-2 mt-4">
+        {/* Password */}
+        <div className="flex flex-col gap-2">
           <label>Password</label>
           <input
+            name="password"
+            type="password"
             placeholder="*********"
             value={formData.password}
             onChange={handleChange}
             className="border p-2"
           />
+          {errors.password && (
+            <p className="text-red-500 text-sm">{errors.password}</p>
+          )}
         </div>
 
-        <div>
-          <label className="block mb-1 text-sm font-medium">
-            Confirm Password
-          </label>
+        {/* Confirm Password */}
+        <div className="flex flex-col gap-2">
+          <label>Confirm Password</label>
           <input
             name="confirmPassword"
             type="password"
+            placeholder="*********"
             value={formData.confirmPassword}
             onChange={handleChange}
-            className="w-full border rounded px-3 py-2"
-            placeholder="••••••••"
+            className="border p-2"
           />
+          {errors.confirmPassword && (
+            <p className="text-red-500 text-sm">{errors.confirmPassword}</p>
+          )}
         </div>
       </div>
 
-      <button className="w-full bg-red-500 font-bold p-2 text-white hover:scale-105 transition-all duration-300 ease-in-out ">
+      <button className="w-full bg-black font-bold p-2 text-white transition-all duration-300 ease-in-out cursor-pointer hover:bg-gradient-to-r hover:from-red-500 hover:to-red-600">
         Submit
       </button>
-
-      <div className="relative flex items-center py-5">
-        <div className="grow border-t border-gray-400"></div>
-
-        <span className="shrink mx-4 text-gray-500 text-sm bg-white dark:bg-gray-800">
-          OR
-        </span>
-
-        <div className="grow border-t border-gray-400"></div>
-      </div>
-      <div className="flex flex-col gap-6">
-        <button className="border p-2 text-lg border-black rounded font-extralight">
-          Sign in with Noodle
-        </button>
-
-        <button className="border p-2 text-lg border-black rounded font-extralight">
-          Sign in with Fiddle
-        </button>
-      </div>
+      <OtherOptions />
     </form>
   );
 }
