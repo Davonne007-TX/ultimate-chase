@@ -10,7 +10,7 @@ export default function MyForm() {
     confirmPassword: "",
   });
 
-  const [errors, setErrors] = useState<any>({});
+  const [errors, setErrors] = useState({});
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     const { name, value } = e.target;
@@ -22,6 +22,7 @@ export default function MyForm() {
     const newErrors: any = {};
 
     if (!formData.name) newErrors.name = "Name is required";
+    if (!formData.email) newErrors.email = "Email is required";
     if (!formData.password) newErrors.password = "Password is required";
     if (!formData.confirmPassword)
       newErrors.confirmPassword = "Confirm Password is required";
@@ -36,82 +37,104 @@ export default function MyForm() {
 
     if (Object.keys(newErrors).length === 0) {
       console.log("Form submitted:", formData);
+      alert("Form has been submitted!");
     }
   }
 
   return (
     <form
       onSubmit={handleSubmit}
-      className="space-y-4 p-6 bg-white rounded-lg shadow"
+      className="space-y-6 p-8 bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl shadow-2xl max-w-lg mx-auto font-[var(--font-rubik)]"
     >
-      <h1 className="text-3xl">Create an Account</h1>
-      <p>
+      <h1 className="text-3xl font-bold text-gray-900 mb-2">
+        Create an Account
+      </h1>
+      <p className="text-gray-700">
         Your adventure waits, build and create the haunted house of your dreams.
       </p>
 
       <div className="flex flex-col gap-4">
-        {/* Name */}
+        {/** Name **/}
         <div className="flex flex-col gap-2">
-          <label>Name</label>
+          <label className="text-gray-800 font-medium">Name</label>
           <input
             name="name"
             placeholder="Enter your name"
             value={formData.name}
             onChange={handleChange}
-            className="border p-2"
+            className="border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-400 transition-all duration-300"
           />
-          {errors.name && <p className="text-red-500 text-sm">{errors.name}</p>}
+          {errors.name && (
+            <p className="text-red-500 text-sm transition-opacity duration-300">
+              {errors.name}
+            </p>
+          )}
         </div>
 
-        {/* Email */}
+        {/** Email **/}
         <div className="flex flex-col gap-2">
-          <label>Email Address</label>
+          <label className="text-gray-800 font-medium">Email Address</label>
           <input
             name="email"
             type="email"
             placeholder="your@email.com"
             value={formData.email}
             onChange={handleChange}
-            className="border p-2"
+            className="border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-400 transition-all duration-300"
           />
+          {errors.email && (
+            <p className="text-red-500 text-sm transition-opacity duration-300">
+              {errors.email}
+            </p>
+          )}
         </div>
 
-        {/* Password */}
+        {/** Password **/}
         <div className="flex flex-col gap-2">
-          <label>Password</label>
+          <label className="text-gray-800 font-medium">Password</label>
           <input
             name="password"
             type="password"
             placeholder="*********"
             value={formData.password}
             onChange={handleChange}
-            className="border p-2"
+            className="border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-400 transition-all duration-300"
           />
           {errors.password && (
-            <p className="text-red-500 text-sm">{errors.password}</p>
+            <p className="text-red-500 text-sm transition-opacity duration-300">
+              {errors.password}
+            </p>
           )}
         </div>
 
-        {/* Confirm Password */}
+        {/* * Confirm Password *
         <div className="flex flex-col gap-2">
-          <label>Confirm Password</label>
+          <label className="text-gray-800 font-medium">Confirm Password</label>
           <input
             name="confirmPassword"
             type="password"
             placeholder="*********"
             value={formData.confirmPassword}
             onChange={handleChange}
-            className="border p-2"
+            className="border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-400 transition-all duration-300"
           />
           {errors.confirmPassword && (
-            <p className="text-red-500 text-sm">{errors.confirmPassword}</p>
+            <p className="text-red-500 text-sm transition-opacity duration-300">
+              {errors.confirmPassword}
+            </p>
           )}
-        </div>
+        </div> */}
       </div>
 
-      <button className="w-full bg-black font-bold p-2 text-white transition-all duration-300 ease-in-out cursor-pointer hover:bg-gradient-to-r hover:from-red-500 hover:to-red-600">
+      {/** Submit Button **/}
+      <button
+        type="submit"
+        className="w-full bg-gradient-to-r from-red-500 to-red-600 text-white font-bold py-3 rounded-xl shadow-lg hover:scale-105 transform transition-all duration-300"
+      >
         Submit
       </button>
+
+      {/** Other sign-in options **/}
       <OtherOptions />
     </form>
   );

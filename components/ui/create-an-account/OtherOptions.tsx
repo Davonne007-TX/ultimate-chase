@@ -5,7 +5,7 @@ export default function OtherOptions() {
     <section>
       <div className="relative flex items-center py-5">
         <div className="grow border-t border-gray-400"></div>
-        <span className="shrink mx-4 text-gray-500 text-sm bg-white dark:bg-gray-800">
+        <span className="shrink mx-4  text-white p-2 text-sm  bg-white dark:bg-gray-800">
           OR
         </span>
         <div className="grow border-t border-gray-400"></div>
