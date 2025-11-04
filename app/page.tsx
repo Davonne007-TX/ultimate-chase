@@ -1,13 +1,14 @@
-import Image from "next/image";
+import MyForm from "@/components/MyForm";
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-pink-400 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <h1 className="text-green-500 font-bold font-mono text-6xl">
-          Happy Halloween
-        </h1>
-      </main>
-    </div>
+    <main className="flex min-h-screen flex-col items-center justify-between bg-[url('/skull.jpg')] bg-cover bg-center w-full">
+      <div className="flex flex-col lg:ml-auto mt-20 lg:mt-0 lg:p-40">
+        {/* <h1 className="text-6xl mt-20 font-bold font-mono text-white">
+          Ultimate Chase
+        </h1> */}
+        <MyForm />
+      </div>
+    </main>
   );
 }
