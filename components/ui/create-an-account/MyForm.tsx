@@ -10,7 +10,14 @@ export default function MyForm() {
     confirmPassword: "",
   });
 
-  const [errors, setErrors] = useState({});
+  interface FormErrors {
+    name?: string;
+    email?: string;
+    password?: string;
+    confirmPassword?: string;
+  }
+
+  const [errors, setErrors] = useState<FormErrors>({});
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     const { name, value } = e.target;
@@ -19,7 +26,7 @@ export default function MyForm() {
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    const newErrors: any = {};
+    const newErrors: FormErrors = {};
 
     if (!formData.name) newErrors.name = "Name is required";
     if (!formData.email) newErrors.email = "Email is required";
@@ -44,7 +51,7 @@ export default function MyForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="space-y-6 p-8 bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl shadow-2xl max-w-lg mx-auto font-[var(--font-rubik)]"
+      className="space-y-6 p-8 bg-linear-to-br from-gray-50 to-gray-100 rounded-2xl shadow-2xl max-w-lg mx-auto"
     >
       <h1 className="text-3xl font-bold text-gray-900 mb-2">
         Create an Account
@@ -54,7 +61,6 @@ export default function MyForm() {
       </p>
 
       <div className="flex flex-col gap-4">
-        {/** Name **/}
         <div className="flex flex-col gap-2">
           <label className="text-gray-800 font-medium">Name</label>
           <input
@@ -71,7 +77,6 @@ export default function MyForm() {
           )}
         </div>
 
-        {/** Email **/}
         <div className="flex flex-col gap-2">
           <label className="text-gray-800 font-medium">Email Address</label>
           <input
@@ -126,15 +131,13 @@ export default function MyForm() {
         </div> */}
       </div>
 
-      {/** Submit Button **/}
       <button
         type="submit"
-        className="w-full bg-gradient-to-r from-red-500 to-red-600 text-white font-bold py-3 rounded-xl shadow-lg hover:scale-105 transform transition-all duration-300"
+        className="w-full bg-linear-to-r from-red-500 to-red-600 text-white font-bold py-3 rounded-xl shadow-lg hover:scale-105 transform transition-all duration-300"
       >
         Submit
       </button>
 
-      {/** Other sign-in options **/}
       <OtherOptions />
     </form>
   );
