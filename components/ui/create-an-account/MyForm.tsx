@@ -51,7 +51,7 @@ export default function MyForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="space-y-2 px-8 mt-2 py-8 lg:ml-20 mb-6 bg-linear-to-br from-gray-50 to-gray-100 rounded-2xl shadow-2xl max-w-3xl"
+      className="space-y-2 px-8 mt-2 py-8  mb-6 bg-linear-to-br from-gray-50 to-gray-100 rounded-2xl shadow-2xl max-w-3xl"
     >
       <h1 className="text-3xl font-bold text-gray-900 mb-2">
         Create an Account
