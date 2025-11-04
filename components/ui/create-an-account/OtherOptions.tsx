@@ -3,7 +3,7 @@
 export default function OtherOptions() {
   return (
     <section>
-      <div className="relative flex items-center p-8 -mt-4">
+      <div className="relative flex items-center p-6 -mt-4">
         <div className="grow border-t border-gray-400"></div>
         <span className="shrink mx-4 text-white p-2 text-sm  dark:bg-gray-800">
           OR

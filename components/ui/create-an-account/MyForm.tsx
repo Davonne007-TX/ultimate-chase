@@ -51,12 +51,12 @@ export default function MyForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="space-y-6 p-8 bg-linear-to-br from-gray-50 to-gray-100 rounded-2xl shadow-2xl max-w-lg mx-auto"
+      className="space-y-2 px-8 py-8 lg:ml-20 mb-6 bg-linear-to-br from-gray-50 to-gray-100 rounded-2xl shadow-2xl max-w-lg "
     >
       <h1 className="text-3xl font-bold text-gray-900 mb-2">
         Create an Account
       </h1>
-      <p className="text-gray-700">
+      <p className="text-gray-700 text-lg">
         Your adventure waits, build and create the haunted house of your dreams.
       </p>
 
@@ -133,7 +133,7 @@ export default function MyForm() {
 
       <button
         type="submit"
-        className="w-full bg-linear-to-r from-red-500 to-red-600 text-white font-bold py-3 rounded-xl shadow-lg hover:scale-105 transform transition-all duration-300"
+        className="w-full mt-4 bg-linear-to-r from-red-500 to-red-600 text-white font-bold py-3 rounded-xl shadow-lg hover:scale-105 transform transition-all duration-300"
       >
         Submit
       </button>

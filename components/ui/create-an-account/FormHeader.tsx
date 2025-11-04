@@ -20,7 +20,7 @@ export default function FormHeader() {
       {/* Links + Buttons */}
       <div className="flex flex-col lg:flex-row items-center gap-8 mt-4 lg:mt-0 w-full lg:w-auto">
         {/* Navigation Links */}
-        <nav className="flex gap-6">
+        <nav className="hidden lg:flex gap-6">
           {links.map((link) => (
             <a
               key={link.name}
